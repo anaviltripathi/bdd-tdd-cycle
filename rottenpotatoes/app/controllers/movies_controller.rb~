@@ -68,32 +68,32 @@ class MoviesController < ApplicationController
   end
 
   
-  def similar
+  #def similar
   	
-  	@movie = Movie.find params[:movie_id]
-	#@m = @movie.find params[:movie_id]
-  	d =  @movie.director
-  	if not d.blank?
-  		@similar_movies = Movie.find_all_by_director(d)
-		render 'similar'
-  	else
-  		flash[:notice] = "'#{@movie.title}' has no director info"
-  		redirect_to movies_path
-  	end
-  	end
+  #	@movie = Movie.find params[:movie_id]
+	#@m = @movie.find params[:id]
+ # 	d =  @movie.director
+  #	if not d.blank?
+  	#	@movie_similar = Movie.find_all_by_director(d)
+	#	render 'similar'
+#  	else
+ # 		flash[:notice] = "'#{@movie.title}' has no director info"
+  #		redirect_to movies_path
+  #	end
+  #	end
   	
-  #	def similar
-  #  @movie = Movie.find(params[:movie_id])
-  #  d = @movie.director
+  	def similar
+    @movie = Movie.find(params[:movie_id])
+    d = @movie.director
 
-   # if d.nil? || d.empty?
-#	flash[:notice] = "\'#{@movie.title}\' has no director info."
- #   	redirect_to movies_path
-  #  else
-  #  	@movie_similar = Movie.find_all_by_director(d)
-#	render 'similar' 
- #   end 
+    if d.nil? || d.empty?
+	flash[:notice] = "\'#{@movie.title}\' has no director info."
+    	redirect_to movies_path
+    else
+    	@movie_similar = Movie.find_all_by_director(d)
+	render 'similar' 
+    end 
 
- # end
+  end
 
 end
