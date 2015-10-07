@@ -6,9 +6,9 @@ class Movie < ActiveRecord::Base
     %w(G PG PG-13 NC-17 R)
   end
 	
-#  def self.similar_directors(director)
-#  	Movie.find_all(:director => director)
-#  end
+  def self.similar_directors(director)
+  	Movie.find_all(:director => director)
+  end
 
 end
 
